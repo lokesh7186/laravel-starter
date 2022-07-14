@@ -1,18 +1,21 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\admin;
 
 use Illuminate\View\Component;
 
-class AdminLayout extends Component
+class Card extends Component
 {
+    public $title;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($title = '')
     {
+        $this->title = $title;
     }
 
     /**
@@ -22,6 +25,6 @@ class AdminLayout extends Component
      */
     public function render()
     {
-        return view('layouts.admin.app');
+        return view('components.admin.card');
     }
 }
