@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'role:user'])->group(function () {
     // User Home
     Route::get('/user/home', function () {
-        return view('user-home');
+        return view('user.dashboard');
     })->name('user.home');
 });
 
