@@ -17,7 +17,8 @@ return new class extends Migration
             $table->dropColumn('name');
             $table->string('username', 20)->unique()->after('id');
             $table->string('firstname', 50)->after('username');
-            $table->string('lastname', 50)->after('firstname');
+            $table->string('lastname', 50)->after('firstname')->nullable();
+            $table->boolean('active')->after('remember_token')->default(1); // @Lokesh : All users are active unless marked by admin
         });
     }
 
@@ -33,6 +34,7 @@ return new class extends Migration
             $table->dropColumn('username');
             $table->dropColumn('firstname');
             $table->dropColumn('lastname');
+            $table->dropColumn('active');
         });
     }
 };

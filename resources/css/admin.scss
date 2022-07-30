@@ -4,6 +4,18 @@
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 
-@import "./admin/adminlte.min.css";
+@import "~overlayscrollbars/css/OverlayScrollbars.min.css";
 
-@import url("/node_modules/overlayscrollbars/css/OverlayScrollbars.min.css");
+@import "~datatables.net-bs4/css/dataTables.bootstrap4.min.css";
+@import "~datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css";
+@import "~datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css";
+
+@import "~icheck-bootstrap/icheck-bootstrap.min.css";
+
+@import "~select2/dist/css/select2.min.css";
+@import "./admin/select2-bs4-theme.css";
+
+@import "./admin/adminlte.core.css";
+@import "./admin/card-colors.css";
+
+@import "./admin/custom.css";

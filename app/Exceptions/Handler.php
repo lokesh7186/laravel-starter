@@ -46,5 +46,15 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
+        $this->renderable(function (\Spatie\Permission\Exceptions\UnauthorizedException $e, $request) {
+            if ($e->getMessage() == 'User is not logged in.') {
+                return redirect()->route('login');
+            }
+            return response()->json([
+                'responseMessage' => $e->getMessage(),
+                'responseStatus'  => $e->getStatusCode(),
+            ]);
+        });
     }
 }

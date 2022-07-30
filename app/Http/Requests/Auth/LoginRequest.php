@@ -67,6 +67,14 @@ class LoginRequest extends FormRequest
             ]);
         }
 
+        if (!$user->active) {
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'login' => __('admin.account_inactive'),
+            ]);
+        }
+
         Auth::login($user, $this->boolean('remember'));
 
         RateLimiter::clear($this->throttleKey());

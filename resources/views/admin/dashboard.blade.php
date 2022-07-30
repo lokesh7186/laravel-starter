@@ -1,4 +1,4 @@
-<x-admin-layout>
+<x-admin-layout :pageTitle="__('admin.dash_welcome')">
 
     <x-slot:page-heading>
         <h1>{{ __('general.dashboard') }}</h1>
@@ -14,9 +14,8 @@
         <div class="row">
             <div class="col-12">
 
-                <x-admin.card :title="__('general.dashboard')">
+                <x-admin.card :title="__('general.dashboard')" class="card-primary">
                     {{ __('admin.dash_welcome') }}
-                    <x-slot:footer>Footer</x-slot:footer>
                 </x-admin.card>
 
             </div>

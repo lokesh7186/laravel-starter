@@ -48,6 +48,7 @@
         "inputmask": "^5.0.7",
         "jquery": "^3.6.0",
         "jquery-validation": "^1.19.4",
+        "jszip": "^3.10.0",
         "moment": "^2.29.3",
         "overlayscrollbars": "^1.13.2",
         "pdfmake": "^0.2.5",

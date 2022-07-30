@@ -4,18 +4,16 @@ namespace App\View\Components\admin;
 
 use Illuminate\View\Component;
 
-class Card extends Component
+class ActiveSwitch extends Component
 {
-    public $footer;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($footer = '')
+    public function __construct()
     {
-        $this->footer = $footer;
+        //
     }
 
     /**
@@ -25,6 +23,6 @@ class Card extends Component
      */
     public function render()
     {
-        return view('components.admin.card');
+        return view('components.admin.active-switch');
     }
 }

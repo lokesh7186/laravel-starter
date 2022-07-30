@@ -6,13 +6,20 @@ use Illuminate\View\Component;
 
 class AdminLayout extends Component
 {
+    public $footerScripts;
+    public $pageTitle;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($footerScripts = '', $pageTitle = '')
     {
+        $this->pageTitle = $pageTitle;
+        $this->pageTitle = empty($this->pageTitle) ? config('app.name', 'Admin Panel') : $this->pageTitle;
+
+        $this->footerScripts = $footerScripts;
     }
 
     /**
