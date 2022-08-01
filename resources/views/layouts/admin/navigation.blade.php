@@ -11,8 +11,7 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('admin/img/avatars/avatar5.png') }}" class="img-circle elevation-2"
-                    alt="User Image">
+                <img src="{{ asset('admin/img/avatars/avatar5.png') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block">{{ auth()->user()->name }}</a>
@@ -39,7 +38,7 @@
                 <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link showLoaderOnClick">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             {{ __('general.dashboard') }}
@@ -56,7 +55,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('admin.users.index') }}" class="nav-link">
+                            <a href="{{ route('admin.users.index') }}" class="nav-link showLoaderOnClick">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('admin.users_list') }}</p>
                             </a>
@@ -71,7 +70,7 @@
 
     <div class="sidebar-custom">
         <a href="#" class="btn btn-link"><i class="fas fa-cogs"></i></a>
-        <a href="{{ url('/logout') }}" class="btn btn-secondary hide-on-collapse pos-right"
+        <a href="{{ url('/logout') }}" class="btn btn-secondary hide-on-collapse pos-right showLoaderOnClick"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
     </div>
     <!-- /.sidebar-custom -->

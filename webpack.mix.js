@@ -11,20 +11,20 @@ const mix = require("laravel-mix");
  |
  */
 
-mix.js("resources/js/vendor.js", "public/js");
-mix.js("resources/js/app.js", "public/js");
-mix.sass("resources/css/app.scss", "public/css");
+mix.js("resources/js/vendor.js", "public/build/js");
+mix.js("resources/js/app.js", "public/build/js");
+mix.sass("resources/css/app.scss", "public/build/css");
 
 /**
  * Admin CSS & JS
  */
 mix.scripts(
     ["resources/js/admin/adminlte.min.js", "resources/js/admin/custom.js"],
-    "public/admin/js/admin.js"
+    "public/build/admin/js/admin.js"
 );
-mix.js("resources/js/admin/vendor.js", "public/admin/js");
+mix.js("resources/js/admin/vendor.js", "public/build/admin/js");
 
-mix.sass("resources/css/admin.scss", "public/admin/css");
+mix.sass("resources/css/admin.scss", "public/build/admin/css");
 
 if (mix.inProduction()) {
     mix.version();

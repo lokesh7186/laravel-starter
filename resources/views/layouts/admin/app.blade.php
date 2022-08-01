@@ -8,11 +8,11 @@
 
     <title>{{ $pageTitle }}</title>
 
-    <link rel="stylesheet" href="{{ mix('admin/css/admin.css') }}">
+    <link rel="stylesheet" href="{{ mix('build/admin/css/admin.css') }}">
 
     <!-- Scripts -->
-    <script src="{{ mix('admin/js/vendor.js') }}" defer></script>
-    <script src="{{ mix('admin/js/admin.js') }}" defer></script>
+    <script src="{{ mix('build/admin/js/vendor.js') }}" defer></script>
+    <script src="{{ mix('build/admin/js/admin.js') }}" defer></script>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
