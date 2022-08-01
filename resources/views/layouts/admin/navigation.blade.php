@@ -38,8 +38,8 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
-                <li class="nav-item active">
-                    <a href="#" class="nav-link active">
+                <li class="nav-item">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             {{ __('general.dashboard') }}
@@ -56,21 +56,9 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link">
+                            <a href="{{ route('admin.users.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __('admin.users') }}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="index2.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __('admin.roles') }}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="index3.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __('admin.permissions') }}</p>
+                                <p>{{ __('admin.users_list') }}</p>
                             </a>
                         </li>
                     </ul>

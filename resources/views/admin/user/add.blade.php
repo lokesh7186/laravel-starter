@@ -25,7 +25,7 @@
                         <x-slot:footer>
                             <button type="submit" class="btn btn-primary">Submit</button>
                             <a href="{{ route('admin.users.index') }}"
-                                class="btn text-danger">{{ __('general.cancel') }}</a>
+                                class="btn text-danger showLoaderOnClick">{{ __('general.cancel') }}</a>
                         </x-slot:footer>
                     </x-admin.card>
                 </form>

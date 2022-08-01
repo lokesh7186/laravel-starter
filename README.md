@@ -1,6 +1,7 @@
 ## Setup
 
-Laravel 9 Starter Admin Theme with AdminLTE Theme Follow the steps to start working on local:
+Laravel 9 Starter Admin Theme with AdminLTE Theme .
+Follow the steps to start working on local:
 
 -   Run "composer install" to install PHP dependencies.
 -   Rename ".env.example" file to ".env"

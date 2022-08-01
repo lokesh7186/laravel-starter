@@ -1,4 +1,12 @@
 $(function () {
+    // Highlight Active Menu
+    var url = window.location;
+    // for treeview which is like a submenu
+    $('ul.nav-treeview a').filter(function () {
+        return this.href == url;
+    }).addClass('active').closest('ul').prev().addClass('active').parent().addClass('menu-open');
+
+
     // Show Loader on Breadcrumb Links
     $("ol.breadcrumb")
         .find("a")
