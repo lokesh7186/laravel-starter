@@ -19,6 +19,7 @@ class UserFactory extends Factory
     {
         return [
             'username' => $this->faker->unique()->userName(),
+            'is_admin' => 0,
             'firstname' => fake()->firstName(),
             'lastname' => fake()->lastName(),
             'email' => fake()->safeEmail(),

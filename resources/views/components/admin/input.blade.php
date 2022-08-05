@@ -1,5 +1,7 @@
 <div class="form-group">
-    <x-admin.label :label="$label" :for="$attributes->get('id') ?: ''" />
+    <div>
+        <x-admin.label :label="$label" :for="$attributes->get('id') ?: ''" />
+    </div>
 
     <div class="input-group">
         @isset($prepend)
@@ -10,7 +12,8 @@
             </div>
         @endisset
 
-        <input {!! $attributes->merge(['class' => 'form-control ']) !!} type="{{ $type }}" value="{{ $value }}" name="{{ $name }}"
+        <input {{ $attributes->merge(['class' => 'form-control ']) }} type="{{ $type }}"
+            value="{{ $value }}" name="{{ $name }}"
             @if ($label && $attributes->get('id')) id="{{ $attributes->get('id') }}" @endif />
 
         @isset($append)

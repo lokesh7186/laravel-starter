@@ -13,5 +13,6 @@ return [
     'password' => 'Password',
     'confirm_password' => 'Confirm Password',
     'change_password' => 'Change Password',
+    'submit' => 'Submit',
 
 ];

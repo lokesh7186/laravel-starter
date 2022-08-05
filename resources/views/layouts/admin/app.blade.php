@@ -48,8 +48,16 @@
 
             <!-- Main content -->
             <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <x-admin.flash-message />
+                            <x-admin.validation-errors class="mb-4" :errors="$errors" />
 
-                {{ $slot }}
+                            {{ $slot }}
+                        </div>
+                    </div>
+                </div>
 
             </section>
             <!-- /.content -->

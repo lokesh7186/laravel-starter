@@ -69,14 +69,16 @@
     <!-- /.sidebar -->
 
     <div class="sidebar-custom">
-        <a href="#" class="btn btn-link"><i class="fas fa-cogs"></i></a>
+        @can('Manage App Settings')
+            <a href="{{ route('admin.settings.index') }}" class="btn btn-link"><i class="fas fa-cogs"></i></a>
+        @endcan
         <a href="{{ url('/logout') }}" class="btn btn-secondary hide-on-collapse pos-right showLoaderOnClick"
-            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Log Out') }}</a>
     </div>
     <!-- /.sidebar-custom -->
 </aside>
 
 {{-- Logout Form --}}
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-    {{ csrf_field() }}
+    @csrf
 </form>

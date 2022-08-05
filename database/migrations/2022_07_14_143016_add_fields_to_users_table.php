@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('name');
             $table->string('username', 20)->unique()->after('id');
-            $table->string('firstname', 50)->after('username');
+            $table->boolean('is_admin')->after('username')->default(0);
+            $table->string('firstname', 50)->after('is_admin');
             $table->string('lastname', 50)->after('firstname')->nullable();
             $table->boolean('active')->after('remember_token')->default(1); // @Lokesh : All users are active unless marked by admin
         });
@@ -32,9 +33,10 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('name')->unique()->after('id');
             $table->dropColumn('username');
+            $table->dropColumn('active');
             $table->dropColumn('firstname');
             $table->dropColumn('lastname');
-            $table->dropColumn('active');
+            $table->dropColumn('is_admin');
         });
     }
 };

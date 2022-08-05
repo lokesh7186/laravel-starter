@@ -20,10 +20,6 @@ $(function () {
     $("body").on("click", ".showLoaderOnClick", function () {
         showLoader();
     });
-    // Show Loader on Submit of Form with class showLoadingOnSubmit
-    $(".showLoadingOnSubmit").on("submit", function () {
-        showLoader();
-    });
 
     // Add Default Select 2
     if ($(".select2").length > 0) {

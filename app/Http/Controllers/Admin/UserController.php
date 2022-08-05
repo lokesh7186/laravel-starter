@@ -17,10 +17,8 @@ class UserController extends Controller
 {
     function __construct()
     {
-        // $this->middleware('role_or_permission:User access|User create|User edit|User delete', ['only' => ['index', 'show']]);
-        $this->middleware('role_or_permission:User create', ['only' => ['create', 'store']]);
-        $this->middleware('role_or_permission:User edit', ['only' => ['edit', 'update']]);
-        $this->middleware('role_or_permission:User delete', ['only' => ['destroy']]);
+        $this->middleware('permission:users.access|users.manage', ['only' => ['index', 'show']]);
+        $this->middleware('permission:users.manage', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
     }
 
     /**
@@ -42,7 +40,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::get();
-        return view('admin.user.add', ['roles' => $roles]);
+        return view('admin.user.create', ['roles' => $roles]);
     }
 
     /**
@@ -66,11 +64,6 @@ class UserController extends Controller
         $user->save();
 
         $user->assignRole($validated['role']);
-
-        // Assign all permissions to Admin.
-        if ($validated['role'] != 'user') {
-            $user->givePermissionTo(Role::findByName($validated['role'])->permissions);
-        }
 
         // return redirect()->route('admin.users.show', ['user' => $user->id]);
         return redirect()->route('admin.users.index')->with('status-success', 'User was added successfully.');
@@ -127,14 +120,6 @@ class UserController extends Controller
             $user->removeRole($userCurrentRole);
             // Assign new role
             $user->assignRole($validated['role']);
-
-            if ($validated['role'] == 'user') {
-                // remove all permissions for website frontned user
-                $user->syncPermissions([]);
-            } else {
-                // Assign all permissions of the role.
-                $user->givePermissionTo(Role::findByName($validated['role'])->permissions);
-            }
         }
 
         return redirect()->route('admin.users.index')->with('status-success', 'User ' . $user->username . ' was modified successfully.');

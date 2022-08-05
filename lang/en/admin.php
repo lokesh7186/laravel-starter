@@ -7,6 +7,7 @@ return [
     'permissions' => 'Permissions',
     'dash_welcome' => 'Welcome to the Admin section',
 
+    'id' => 'Id',
     'users_list' => 'Users List',
     'new_user' => 'New User',
     'update_user' => 'Update User',
@@ -16,7 +17,12 @@ return [
     'user_first_name' => 'First Name',
     'user_last_name' => 'Last Name',
 
-    
-    
-    
+    'settings' => 'Settings',
+    'new_setting' => 'New Setting',
+    'update_setting' => 'Update Setting',
+
+
+
+
+
 ];

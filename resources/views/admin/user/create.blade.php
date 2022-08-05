@@ -1,23 +1,19 @@
-<x-admin-layout :pageTitle="__('admin.update_user') . ' : ' . $user->username">
+<x-admin-layout :pageTitle="__('admin.new_user')">
     <x-slot:page-heading>
         <h1>{{ __('general.users') }}</h1>
 
         <x-slot:breadcrumb>
             <x-admin.breadcrumbs :data="[
                 __('general.home') => route('admin.dashboard'),
-                __('general.users') => route('admin.users.index'),
-                $user->username => '',
-                __('admin.update_user') => '',
+                __('admin.new_user') => route('admin.users.index'),
+                __('admin.new_user') => '',
             ]" />
         </x-slot:breadcrumb>
-
     </x-slot:page-heading>
 
-
-    <form method="POST" action="{{ route('admin.users.update', ['user' => $user->id]) }}" id="userForm" class="">
-        @method('PUT')
+    <form method="POST" action="{{ route('admin.users.store') }}" id="userForm" class="">
         @csrf
-        <x-admin.card :title="__('admin.update_user') . ' : ' . $user->username . '     (' . $user->email . ')'" class="card-primary">
+        <x-admin.card :title="__('admin.new_user')" class="card-primary">
             @include('admin.user._form')
         </x-admin.card>
     </form>
@@ -46,9 +42,11 @@
                             minlength: 2
                         },
                         password: {
+                            required: true,
                             minlength: 5
                         },
                         password_confirmation: {
+                            minlength: 5,
                             equalTo: "#password"
                         },
                         role: {
@@ -61,6 +59,7 @@
                             email: "Please enter a valid email address"
                         },
                         password: {
+                            required: "Please provide a password",
                             minlength: "Your password must be at least 5 characters long"
                         },
                         password_confirmation: "Passwords do not match"

@@ -10,15 +10,9 @@
         </x-slot:breadcrumb>
     </x-slot:page-heading>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
 
-                <x-admin.card :title="__('general.dashboard')" class="card-primary">
-                    {{ __('admin.dash_welcome') }}
-                </x-admin.card>
+    <x-admin.card :title="__('general.dashboard')" class="card-primary">
+        {{ __('admin.dash_welcome') }}
+    </x-admin.card>
 
-            </div>
-        </div>
-    </div>
 </x-admin-layout>

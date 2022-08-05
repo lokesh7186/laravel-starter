@@ -13,11 +13,9 @@
 <div class="form-group">
     <div><label for="role">Role</label></div>
     @foreach ($roles as $role)
-        <div class="icheck-primary d-inline mx-2">
-            <input class="form-check-input" type="radio" id="role{{ $role->id }}" name="role"
-                value="{{ $role->name }}" @checked(old('role', isset($user) ? $user->roles->pluck('name')->first() : '') == $role->name)>
-            <label class="form-check-label" for="role{{ $role->id }}">{{ $role->name }}</label>
-        </div>
+        <x-admin.checkbox id="role{{ $role->id }}" name="role" value="{{ $role->name }}"
+            label="{{ $role->name }}"
+            checked="{{ old('role', isset($user) ? $user->roles->pluck('name')->first() : '') == $role->name }}" />
     @endforeach
 </div>
 
@@ -33,3 +31,9 @@
         <x-slot:footer><small>{{ __('admin.password_change_note') }}</small></x-slot:footer>
     @endif
 </x-admin.card>
+
+<x-slot:footer>
+    <button type="submit" class="btn btn-primary">{{ __('general.submit') }}</button>
+    <a href="{{ route('admin.users.index') }}"
+        class="btn text-danger showLoaderOnClick">{{ __('general.cancel') }}</a>
+</x-slot:footer>
