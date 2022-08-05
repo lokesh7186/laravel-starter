@@ -26,6 +26,8 @@ mix.js("resources/js/admin/vendor.js", "public/build/admin/js");
 
 mix.sass("resources/css/admin.scss", "public/build/admin/css");
 
+mix.copy("resources/img/admin/", "public/build/admin/img/", false);
+
 if (mix.inProduction()) {
     mix.version();
 }
