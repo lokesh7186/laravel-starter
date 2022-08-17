@@ -12,7 +12,7 @@
 
 
     <x-admin.card :title="__('general.dashboard')" class="card-primary">
-        {{ __('admin.dash_welcome') }}
+        {{ $appName . ' : ' . __('admin.dash_welcome') }}
     </x-admin.card>
 
 </x-admin-layout>

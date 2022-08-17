@@ -48,6 +48,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function profile()
+    {
+        $this->hasOne('App\Models\UserProfile');
+    }
+
+
     /**
      * Get the user's Fulle name.
      *

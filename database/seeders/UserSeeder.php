@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use \App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
@@ -83,5 +84,12 @@ class UserSeeder extends Seeder
 
         // Add Dummy Site Users for Frontend. These Users will have no Role, Permissions
         $site_users = User::factory(10)->create();
+
+        // Create Site users Dummy Profiles.
+        $profiles = UserProfile::factory(10)->make()->each(function ($profile, $index)  use ($site_users) {
+            $profile->user_id = $site_users[$index]->id;
+            $profile->profile_slug = Str::slug($site_users[$index]->name);
+            $profile->save();
+        });
     }
 }

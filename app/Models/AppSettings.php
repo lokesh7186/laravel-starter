@@ -18,7 +18,7 @@ class AppSettings extends Model
         parent::boot();
 
         static::updating(function (AppSettings $appSettings) {
-            Cache::forget("app-settings-{$appSettings->key}");
+            Cache::forget("settings");
         });
     }
 }

@@ -3,7 +3,7 @@
     <a href="index3.html" class="brand-link">
         <img src="{{ asset('admin/img/admin-logo.png') }}" alt="Admin" class="brand-image img-circle elevation-3"
             style="opacity: .8">
-        <span class="brand-text font-weight-light">{{ __('general.site_name') }}</span>
+        <span class="brand-text font-weight-light">{{ settings('app_name') }}</span>
     </a>
 
     <!-- Sidebar -->
@@ -49,7 +49,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user-circle"></i>
                         <p>
-                            Administration
+                            {{ __('Administration') }}
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>

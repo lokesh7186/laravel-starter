@@ -1,8 +1,16 @@
 {
-    "/js/vendor.js": "/js/vendor.js",
-    "/js/app.js": "/js/app.js",
-    "/admin/js/vendor.js": "/admin/js/vendor.js",
-    "/admin/css/admin.css": "/admin/css/admin.css",
-    "/css/app.css": "/css/app.css",
-    "/admin/js/admin.js": "/admin/js/admin.js"
+    "/build/js/vendor.js": "/build/js/vendor.js",
+    "/build/js/app.js": "/build/js/app.js",
+    "/build/admin/js/vendor.js": "/build/admin/js/vendor.js",
+    "/build/admin/css/admin.css": "/build/admin/css/admin.css",
+    "/build/css/app.css": "/build/css/app.css",
+    "/build/admin/js/admin.js": "/build/admin/js/admin.js",
+    "/build/admin/img/admin-logo.png": "/build/admin/img/admin-logo.png",
+    "/build/admin/img/avatars/avatar.png": "/build/admin/img/avatars/avatar.png",
+    "/build/admin/img/avatars/avatar2.png": "/build/admin/img/avatars/avatar2.png",
+    "/build/admin/img/avatars/avatar3.png": "/build/admin/img/avatars/avatar3.png",
+    "/build/admin/img/avatars/avatar4.png": "/build/admin/img/avatars/avatar4.png",
+    "/build/admin/img/avatars/avatar5.png": "/build/admin/img/avatars/avatar5.png",
+    "/build/admin/img/default-150x150.png": "/build/admin/img/default-150x150.png",
+    "/build/admin/img/icons.png": "/build/admin/img/icons.png"
 }
