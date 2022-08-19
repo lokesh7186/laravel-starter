@@ -60,6 +60,12 @@
                                 <p>{{ __('admin.users_list') }}</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.permissions.index') }}" class="nav-link showLoaderOnClick">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('admin.permissions') }}</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

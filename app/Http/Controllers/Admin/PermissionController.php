@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
+use App\Http\Requests\Admin\StorePermission;
 
 class PermissionController extends Controller
 {
@@ -15,7 +15,9 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        //
+        // $this->authorize('permissions.access');
+        $permissions = Permission::orderBy('name')->get();
+        return view('admin.permissions.index', ['permissions' => $permissions]);
     }
 
     /**
@@ -25,27 +27,35 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('permissions.manage');
+        return view('admin.permissions.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\Admin\StorePermission  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePermission $request)
     {
-        //
+        $validated = $request->validated();
+
+        $permission = new Permission();
+        $permission->name = $validated['permissionName'];
+        $permission->guard_name = 'web';
+        $permission->save();
+
+        return redirect()->route('admin.permissions.index')->with('status-success', 'Permission ' . $permission->name . ' was added successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Permission $permission)
     {
         //
     }
@@ -53,34 +63,40 @@ class PermissionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Permission $permission)
     {
-        //
+        $this->authorize('permissions.manage');
+        return view('admin.permissions.edit', ['permission' => $permission]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  App\Http\Requests\Admin\StorePermission  $request
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(StorePermission $request, Permission $permission)
     {
-        //
+        $validated = $request->validated();
+
+        $permission->name = $validated['permissionName'];
+        $permission->save();
+
+        return redirect()->route('admin.permissions.index')->with('status-success', 'Permission ' . $permission->name . ' was modified successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Permission $permission)
     {
-        //
+        // Pending. To check if any user has been assigned this permission.
     }
 }
