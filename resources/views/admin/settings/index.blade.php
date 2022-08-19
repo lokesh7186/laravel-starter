@@ -1,6 +1,6 @@
 <x-admin-layout :pageTitle="__('general.users')">
     <x-slot:page-heading>
-    <h1>{{ __('admin.settings') }}</h1>
+        <h1>{{ __('admin.settings') }}</h1>
         <x-slot:breadcrumb>
             <x-admin.breadcrumbs :data="[
                 __('general.home') => route('admin.dashboard'),
@@ -10,7 +10,7 @@
     </x-slot:page-heading>
 
     <div class="text-right mb-2">
-        @can('Manage App Settings')
+        @can('app_settings.manage')
             <a href="{{ route('admin.settings.create') }}"
                 class="btn btn-primary showLoaderOnClick">{{ __('admin.new_setting') }}</a>
         @endcan
@@ -25,7 +25,9 @@
                         <th>Key</th>
                         <th>Value</th>
                         <th>Order</th>
-                        <th>Actions</th>
+                        @can('app_settings.manage')
+                            <th>Actions</th>
+                        @endcan
                     </tr>
                 </thead>
                 <tbody>
@@ -35,10 +37,12 @@
                             <td>{{ $setting->key }}</td>
                             <td>{{ $setting->value }}</td>
                             <td>{{ $setting->sort_order }}</td>
-                            <td>
-                                <x-admin.edit-link href="{{ route('admin.settings.edit', $setting->id) }}">
-                                </x-admin.edit-link>
-                            </td>
+                            @can('app_settings.manage')
+                                <td>
+                                    <x-admin.edit-link href="{{ route('admin.settings.edit', $setting->id) }}">
+                                    </x-admin.edit-link>
+                                </td>
+                            @endcan
                         </tr>
                     @endforeach
                 </tbody>

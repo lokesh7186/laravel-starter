@@ -10,12 +10,6 @@ use Illuminate\Http\Request;
 
 class AppSettingsController extends Controller
 {
-    function __construct()
-    {
-        $this->middleware('permission:app_settings.access|app_settings.manage', ['only' => ['index', 'show']]);
-        $this->middleware('permission:app_settings.manage', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -23,6 +17,7 @@ class AppSettingsController extends Controller
      */
     public function index()
     {
+        $this->authorize('app_settings.access');
         $settings = AppSettings::orderBy('setting_type')->orderBy('sort_order')->get();
         $settings = $settings->groupBy('setting_type');
         return view('admin.settings.index', ['appSettings' => $settings]);
@@ -35,6 +30,7 @@ class AppSettingsController extends Controller
      */
     public function create()
     {
+        $this->authorize('app_settings.manage');
         return view('admin.settings.create');
     }
 
@@ -78,6 +74,7 @@ class AppSettingsController extends Controller
      */
     public function edit(AppSettings $setting)
     {
+        $this->authorize('app_settings.manage');
         return view('admin.settings.edit', ['appSettings' => $setting]);
     }
 

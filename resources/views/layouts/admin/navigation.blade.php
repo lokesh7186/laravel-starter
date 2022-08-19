@@ -69,7 +69,7 @@
     <!-- /.sidebar -->
 
     <div class="sidebar-custom">
-        @can('Manage App Settings')
+        @can('app_settings.access')
             <a href="{{ route('admin.settings.index') }}" class="btn btn-link"><i class="fas fa-cogs"></i></a>
         @endcan
         <a href="{{ url('/logout') }}" class="btn btn-secondary hide-on-collapse pos-right showLoaderOnClick"

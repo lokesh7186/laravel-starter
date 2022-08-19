@@ -11,7 +11,7 @@
     </x-slot:page-heading>
 
     <div class="text-right mb-2">
-        @can('User create')
+        @can('users.manage')
             <a href="{{ route('admin.users.create') }}"
                 class="btn btn-primary showLoaderOnClick">{{ __('admin.new_user') }}</a>
         @endcan
@@ -48,12 +48,12 @@
                                 class="user-active-switch" />
                         </td>
                         <td>
-                            @can('User edit')
+                            @can('users.manage')
                                 <x-admin.edit-link href="{{ route('admin.users.edit', $user->id) }}">
                                 </x-admin.edit-link>
                             @endcan
 
-                            @can('User delete')
+                            @can('users.manage')
                                 <x-admin.delete-link href="{{ route('admin.users.destroy', $user->id) }}">
                                 </x-admin.delete-link>
                             @endcan

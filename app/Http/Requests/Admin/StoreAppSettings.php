@@ -14,7 +14,7 @@ class StoreAppSettings extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->can('app_settings.manage');
     }
 
     /**

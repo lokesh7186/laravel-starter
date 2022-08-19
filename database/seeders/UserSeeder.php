@@ -64,7 +64,7 @@ class UserSeeder extends Seeder
         $admin_role = Role::create(['name' => 'Admin']);
         $admin_user->assignRole($admin_role);
         $admin_user->givePermissionTo(['users.manage']);
-
+        $admin_user->givePermissionTo(['app_settings.access']);
 
         // Create a read only admin user.
         $readonly_user = User::create([
