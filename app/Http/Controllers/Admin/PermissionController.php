@@ -15,8 +15,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        // $this->authorize('permissions.access');
-        $permissions = Permission::orderBy('name')->get();
+        $this->authorize('permissions.access');
+        $permissions = Permission::withCount('users')->orderBy('name')->get();
         return view('admin.permissions.index', ['permissions' => $permissions]);
     }
 
@@ -97,6 +97,15 @@ class PermissionController extends Controller
      */
     public function destroy(Permission $permission)
     {
-        // Pending. To check if any user has been assigned this permission.
+        $associatedUsers = $permission->users()->count();
+
+
+        if ($associatedUsers > 0) {
+            return redirect()->route('admin.permissions.index')->with('status-error', 'Permission ' . $permission->name . ' can not be Deleted as it is already assigned to ' . $associatedUsers . ' users.');
+        }
+
+        $permission->delete();
+
+        return redirect()->route('admin.permissions.index')->with('status-success', 'Permission ' . $permission->name . ' was Deleted successfully.');
     }
 }

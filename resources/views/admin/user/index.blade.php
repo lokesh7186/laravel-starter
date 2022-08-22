@@ -22,26 +22,32 @@
         <table id="usersTable" class="table table-collapsed table-stripped table-bordered">
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>User Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Active</th>
-                    <th>Actions</th>
+                    <th>#</th>
+                    <th>{{ __('admin.id') }}</th>
+                    <th>{{ __('Name') }}</th>
+                    <th>{{ __('Username') }}</th>
+                    <th>{{ __('Email') }}</th>
+                    <th>{{ __('Role') }}</th>
+                    <th>{{ __('admin.active') }}</th>
+                    <th>{{ __('admin.actions') }}</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($users as $user)
                     <tr>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->firstname . ' ' . $user->firstname }}</td>
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
-                            @foreach ($user->roles as $role)
-                                <span class="badge badge-pill badge-info">{{ $role->name }}</span>
-                            @endforeach
+                            @if ($user->is_admin)
+                                @foreach ($user->roles as $role)
+                                    <span class="badge badge-pill badge-primary">{{ $role->name }}</span>
+                                @endforeach
+                            @else
+                                <span class="badge badge-pill badge-secondary">Frontend User</span>
+                            @endif
                         </td>
                         <td>
                             <x-admin.active-switch :uid="$user->id" :active="$user->active == 1" name="user_status"

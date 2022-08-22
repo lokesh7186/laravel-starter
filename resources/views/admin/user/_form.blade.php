@@ -13,7 +13,7 @@
 <div class="form-group">
     <div><label for="role">Role</label></div>
     @foreach ($roles as $role)
-        <x-admin.checkbox id="role{{ $role->id }}" name="role" value="{{ $role->name }}"
+        <x-admin.radio id="role{{ $role->id }}" name="role" value="{{ $role->name }}"
             label="{{ $role->name }}"
             checked="{{ old('role', isset($user) ? $user->roles->pluck('name')->first() : '') == $role->name }}" />
     @endforeach

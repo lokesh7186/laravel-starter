@@ -9,6 +9,7 @@ return [
 
     'id' => 'Id',
     'actions' => 'Actions',
+    'active' => 'Active',
     'users_list' => 'Users List',
     'new_user' => 'New User',
     'update_user' => 'Update User',

@@ -23,6 +23,7 @@
             <thead>
                 <tr>
                     <th>{{ __('admin.id') }}</th>
+                    <th>{{ __('admin.id') }}</th>
                     <th>{{ __('admin.permission_name') }}</th>
                     <th>{{ __('admin.actions') }}</th>
                 </tr>
@@ -30,6 +31,7 @@
             <tbody>
                 @foreach ($permissions as $permission)
                     <tr>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $permission->id }}</td>
                         <td>{{ $permission->name }}</td>
                         <td>
@@ -38,10 +40,12 @@
                                 </x-admin.edit-link>
                             @endcan
 
-                            @can('permissions.manage')
-                                <x-admin.delete-link href="{{ route('admin.permissions.destroy', $permission->id) }}">
-                                </x-admin.delete-link>
-                            @endcan
+                            @if ($permission->users_count == 0)
+                                @can('permissions.manage')
+                                    <x-admin.delete-link href="{{ route('admin.permissions.destroy', $permission->id) }}">
+                                    </x-admin.delete-link>
+                                @endcan
+                            @endif
                         </td>
                     </tr>
                 @endforeach

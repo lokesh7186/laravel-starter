@@ -29,7 +29,7 @@ class StoreAppSettings extends FormRequest
                 'required',
                 Rule::unique('app_settings'),
                 'min:2',
-                'max:15'
+                'max:100'
             ],
             'value' => ['required', 'min:1', 'max:65000'],
             'sort_order' => ['required', 'min:-100', 'max:1000000'],

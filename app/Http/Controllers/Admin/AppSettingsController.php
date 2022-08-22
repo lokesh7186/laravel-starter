@@ -108,6 +108,12 @@ class AppSettingsController extends Controller
      */
     public function destroy(AppSettings $setting)
     {
-        //
+        if ($setting->is_system != 0) {
+            return redirect()->route('admin.settings.index')->with('status-error', 'Setting ' . $setting->key . ' can not be Deleted. Only User Defined Settings can be deleted.');
+        }
+
+        $setting->delete();
+
+        return redirect()->route('admin.settings.index')->with('status-success', 'Setting ' . $setting->key . ' was Deleted successfully.');
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AppSettingsController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\UserPermissionController;
 
 // Route::get('admin', [DashboardController::class, 'index'])->name('admin_dashboard');
 
@@ -27,6 +28,13 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')-
 
         Route::match(['put', 'patch'], 'users/{user}/toggle', [UserController::class, 'toggleActive'])->name('users.toggle_status');
         Route::resource('users', 'UserController');
+
+        Route::controller(UserPermissionController::class)->group(function () {
+            Route::get('user_permissions', 'index')->name('user_permissions.index');
+            Route::get('user_permissions/{username}', 'search')->name('user_permissions.search');
+            Route::put('user_permissions/{username}', 'store')->name('user_permissions.store');
+        });
+
         Route::resource('permissions', 'PermissionController');
 
         Route::resource('settings', 'AppSettingsController');

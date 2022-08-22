@@ -1,7 +1,7 @@
-@props(['value' => '', 'checked' => false, 'label' => '', 'id' => '', 'parentClass' => ''])
+@props(['name' => '', 'value' => '', 'checked' => false, 'label' => '', 'id' => '', 'inline' => false])
 
-<div class="icheck-primary d-inline mx-2 {{ $parentClass }}">
-    <input {{ $attributes->merge(['class' => 'form-check-input ']) }} type="radio" id="{{ $id }}"
-        name="role" value="{{ $value }}" @checked($checked)>
+<div class="form-check form-check-inline">
+    <input {{ $attributes->merge(['class' => 'form-check-input ']) }} type="checkbox" @checked($checked)
+        name="{{ $name }}" value="{{ $value }}" id="{{ $id }}">
     <x-admin.label class="form-check-label" :label="$label" :for="$id" />
 </div>

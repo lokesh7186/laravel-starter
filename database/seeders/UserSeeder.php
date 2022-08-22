@@ -59,6 +59,10 @@ class UserSeeder extends Seeder
         Permission::create(['name' => 'users.access']);
         Permission::create(['name' => 'users.manage']);
 
+        Permission::create(['name' => 'user_permissions.manage']);
+
+        // Give all permissions to super admin.
+        $super_admin_user->givePermissionTo(Permission::all());
 
         // Create a normal Admin role and assign some permission to the user of this Role
         $admin_role = Role::create(['name' => 'Admin']);

@@ -56,14 +56,20 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('admin.users.index') }}" class="nav-link showLoaderOnClick">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="far fa-user nav-icon"></i>
                                 <p>{{ __('admin.users_list') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.permissions.index') }}" class="nav-link showLoaderOnClick">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fa fa-key nav-icon"></i>
                                 <p>{{ __('admin.permissions') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.user_permissions.index') }}" class="nav-link showLoaderOnClick">
+                                <i class="fa fa-user-group nav-icon"></i>
+                                <p>{{ __('User Permissions') }}</p>
                             </a>
                         </li>
                     </ul>

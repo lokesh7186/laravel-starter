@@ -1,8 +1,8 @@
 @if (!isset($appSettings))
-    <x-admin.input type="text" id="key" name="key" label="Key" placeholder="Enter Key" maxlength="15"
+    <x-admin.input type="text" id="key" name="key" label="Key" placeholder="Enter Key" maxlength="100"
         value="{{ old('key') }}" />
 @elseif (isset($appSettings) && $appSettings->is_system == 0)
-    <x-admin.input type="text" id="key" name="key" label="Key" placeholder="Enter Key" maxlength="15"
+    <x-admin.input type="text" id="key" name="key" label="Key" placeholder="Enter Key" maxlength="100"
         value="{{ old('key', $appSettings->key ?? '') }}" />
 @endif
 

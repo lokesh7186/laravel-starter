@@ -39,8 +39,10 @@
                             <td>{{ $setting->sort_order }}</td>
                             @can('app_settings.manage')
                                 <td>
-                                    <x-admin.edit-link href="{{ route('admin.settings.edit', $setting->id) }}">
-                                    </x-admin.edit-link>
+                                    <x-admin.edit-link href="{{ route('admin.settings.edit', $setting->id) }}" />
+                                    @if ($setting->is_system == 0)
+                                        <x-admin.delete-link href="{{ route('admin.settings.destroy', $setting->id) }}" />
+                                    @endif
                                 </td>
                             @endcan
                         </tr>
