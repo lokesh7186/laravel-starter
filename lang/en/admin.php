@@ -2,6 +2,8 @@
 
 return [
 
+    'select_all' => 'Select All',
+
     'roles' => 'Roles',
     'administration' => 'Administration',
     'permissions' => 'Permissions',

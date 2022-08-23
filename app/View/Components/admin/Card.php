@@ -7,6 +7,8 @@ use Illuminate\View\Component;
 class Card extends Component
 {
     public $footer;
+    public $customTools;
+
 
     /**
      * Create a new component instance.
@@ -16,6 +18,7 @@ class Card extends Component
     public function __construct($footer = '')
     {
         $this->footer = $footer;
+        $this->customTools = '';
     }
 
     /**

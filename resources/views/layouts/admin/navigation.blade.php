@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <!-- SidebarSearch Form -->
+        {{-- <!-- SidebarSearch Form -->
         <div class="form-inline">
             <div class="input-group" data-widget="sidebar-search">
                 <input class="form-control form-control-sidebar" type="search" placeholder="Search"
@@ -29,7 +29,7 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -54,24 +54,30 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('admin.users.index') }}" class="nav-link showLoaderOnClick">
-                                <i class="far fa-user nav-icon"></i>
-                                <p>{{ __('admin.users_list') }}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.permissions.index') }}" class="nav-link showLoaderOnClick">
-                                <i class="fa fa-key nav-icon"></i>
-                                <p>{{ __('admin.permissions') }}</p>
-                            </a>
-                        </li>
+                        @can('users.access')
+                            <li class="nav-item">
+                                <a href="{{ route('admin.users.index') }}" class="nav-link showLoaderOnClick">
+                                    <i class="far fa-user nav-icon"></i>
+                                    <p>{{ __('admin.users_list') }}</p>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('permissions.access')
+                            <li class="nav-item">
+                                <a href="{{ route('admin.permissions.index') }}" class="nav-link showLoaderOnClick">
+                                    <i class="fa fa-key nav-icon"></i>
+                                    <p>{{ __('admin.permissions') }}</p>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('user_permissions.manage')
                         <li class="nav-item">
                             <a href="{{ route('admin.user_permissions.index') }}" class="nav-link showLoaderOnClick">
                                 <i class="fa fa-user-group nav-icon"></i>
                                 <p>{{ __('User Permissions') }}</p>
                             </a>
                         </li>
+                        @endcan
                     </ul>
                 </li>
             </ul>

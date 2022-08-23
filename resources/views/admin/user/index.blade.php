@@ -55,13 +55,14 @@
                         </td>
                         <td>
                             @can('users.manage')
-                                <x-admin.edit-link href="{{ route('admin.users.edit', $user->id) }}">
-                                </x-admin.edit-link>
-                            @endcan
+                                @if ($user->is_admin && Auth::user()->can('user_permissions.manage'))
+                                    <x-admin.icon-link href="{{ route('admin.user_permissions.search', $user->username) }}"
+                                        icon="fa-user-group" title="{{ __('admin.update_permission') }}"
+                                        class="btn-warning btn-sm" />
+                                @endif
+                                <x-admin.edit-link href="{{ route('admin.users.edit', $user->id) }}" />
 
-                            @can('users.manage')
-                                <x-admin.delete-link href="{{ route('admin.users.destroy', $user->id) }}">
-                                </x-admin.delete-link>
+                                <x-admin.delete-link href="{{ route('admin.users.destroy', $user->id) }}" />
                             @endcan
                         </td>
                     </tr>
