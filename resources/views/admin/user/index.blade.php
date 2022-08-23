@@ -17,58 +17,67 @@
         @endcan
     </div>
 
+    @include('admin.user._filters')
 
     <x-admin.card title="{{ __('admin.users_list') }}" class="card-primary">
-        <table id="usersTable" class="table table-collapsed table-stripped table-bordered">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>{{ __('admin.id') }}</th>
-                    <th>{{ __('Name') }}</th>
-                    <th>{{ __('Username') }}</th>
-                    <th>{{ __('Email') }}</th>
-                    <th>{{ __('Role') }}</th>
-                    <th>{{ __('admin.active') }}</th>
-                    <th>{{ __('admin.actions') }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($users as $user)
+        <div class=" table-responsive p-0" style="height: 1500px;">
+            <table id="usersTable" class="table table-head-fixed text-nowrap">
+                <thead>
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $user->id }}</td>
-                        <td>{{ $user->firstname . ' ' . $user->firstname }}</td>
-                        <td>{{ $user->username }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>
-                            @if ($user->is_admin)
-                                @foreach ($user->roles as $role)
-                                    <span class="badge badge-pill badge-primary">{{ $role->name }}</span>
-                                @endforeach
-                            @else
-                                <span class="badge badge-pill badge-secondary">Frontend User</span>
-                            @endif
-                        </td>
-                        <td>
-                            <x-admin.active-switch :uid="$user->id" :active="$user->active == 1" name="user_status"
-                                class="user-active-switch" />
-                        </td>
-                        <td>
-                            @can('users.manage')
-                                @if ($user->is_admin && Auth::user()->can('user_permissions.manage'))
-                                    <x-admin.icon-link href="{{ route('admin.user_permissions.search', $user->username) }}"
-                                        icon="fa-user-group" title="{{ __('admin.update_permission') }}"
-                                        class="btn-warning btn-sm" />
-                                @endif
-                                <x-admin.edit-link href="{{ route('admin.users.edit', $user->id) }}" />
-
-                                <x-admin.delete-link href="{{ route('admin.users.destroy', $user->id) }}" />
-                            @endcan
-                        </td>
+                        <th>#</th>
+                        <th>{{ __('admin.id') }}</th>
+                        <th>{{ __('Name') }}</th>
+                        <th>{{ __('Username') }}</th>
+                        <th>{{ __('Email') }}</th>
+                        <th>{{ __('Role') }}</th>
+                        <th>{{ __('admin.active') }}</th>
+                        <th>{{ __('admin.actions') }}</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($users as $user)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $user->id }}</td>
+                            <td>{{ $user->firstname . ' ' . $user->firstname }}</td>
+                            <td>{{ $user->username }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>
+                                @if ($user->is_admin)
+                                    @foreach ($user->roles as $role)
+                                        <span class="badge badge-pill badge-primary">{{ $role->name }}</span>
+                                    @endforeach
+                                @else
+                                    <span class="badge badge-pill badge-secondary">Frontend User</span>
+                                @endif
+                            </td>
+                            <td>
+                                <x-admin.active-switch :uid="$user->id" :active="$user->active == 1" name="user_status"
+                                    class="user-active-switch" />
+                            </td>
+                            <td>
+                                @can('users.manage')
+                                    @if ($user->is_admin && Auth::user()->can('user_permissions.manage'))
+                                        <x-admin.icon-link
+                                            href="{{ route('admin.user_permissions.search', $user->username) }}"
+                                            icon="fa-user-group" title="{{ __('admin.update_permission') }}"
+                                            class="btn-warning btn-sm" />
+                                    @endif
+                                    <x-admin.edit-link href="{{ route('admin.users.edit', $user->id) }}" />
+
+                                    <x-admin.delete-link href="{{ route('admin.users.destroy', $user->id) }}" />
+                                @endcan
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <x-slot:footer>
+            <div class="clearfix">
+                {{ $users->links() }}
+            </div>
+        </x-slot:footer>
     </x-admin.card>
 
     <x-slot:footer-scripts>

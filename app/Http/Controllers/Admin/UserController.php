@@ -26,10 +26,25 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $user = User::with('roles')->latest()->get();
-        return view('admin.user.index', ['users' => $user]);
+        $searchUser = '';
+        $validatedData = $request->validate([
+            'searchUser' => 'sometimes'
+        ]);
+
+        $users = User::with('roles');
+        if (isset($validatedData['searchUser'])) {
+            $searchUser = $validatedData['searchUser'];
+            $users = $users->where('email', 'LIKE', '%' . $searchUser . '%')
+                ->orWhere('firstname', 'LIKE', '%' . $searchUser . '%')
+                ->orWhere('lastname', 'LIKE', '%' . $searchUser . '%')
+                ->orWhere('username', 'LIKE', '%' . $searchUser . '%');
+        }
+
+        $users = $users->latest()->paginate(50);
+
+        return view('admin.user.index', compact('users', 'searchUser'));
     }
 
     /**

@@ -87,7 +87,7 @@ class UserSeeder extends Seeder
         $readonly_user->givePermissionTo(['users.access']);
 
         // Add Dummy Site Users for Frontend. These Users will have no Role, Permissions
-        $site_users = User::factory(10)->create();
+        $site_users = User::factory(100)->create();
 
         // Create Site users Dummy Profiles.
         $profiles = UserProfile::factory(10)->make()->each(function ($profile, $index)  use ($site_users) {

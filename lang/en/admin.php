@@ -3,6 +3,10 @@
 return [
 
     'select_all' => 'Select All',
+    'search' => 'Search',
+    'filters' => 'Filters',
+    'cancel' => 'Cancel',
+    'reset' => 'Reset',
 
     'roles' => 'Roles',
     'administration' => 'Administration',
