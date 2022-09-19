@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,8 +28,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::defaultView('layouts.admin.paginate');
 
-        Cache::remember('settings', 24 * 60, function () {
-            return \App\Models\AppSettings::all();
-        });
+        if (Schema::hasTable('app_settings')) {
+            Cache::remember('settings', 24 * 60, function () {
+                return \App\Models\AppSettings::all();
+            });
+        }
     }
 }

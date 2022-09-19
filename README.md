@@ -6,15 +6,15 @@ Laravel 9 Starter Admin Theme with AdminLTE Theme.
 
 _Follow the steps to start working on local:_
 
--   Install PHP dependencies.
-    ```sh
-    composer install
-    ```
 -   Rename ".env.example" file to ".env"
 -   Create a new Database and update the Database name in .env file.
 -   In the .env file add
     ```sh
         ASSET_URL = 'http://localhost:8000/build'
+    ```
+-   Install PHP dependencies.
+    ```sh
+    composer install
     ```
 -   Run the following commands :
     ```sh
